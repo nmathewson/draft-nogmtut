@@ -51,36 +51,9 @@
 
     <title>Deprecating gmt_unix_time in TLS</title>
 
-    <!-- add 'role="editor"' below for the editors if appropriate -->
+    <!-- add 'role="edi[tor"' below for the editors if appropriate -->
 
-    <author fullname="Ben Laurie" initials="B.L."
-            surname="Laurie">
-      <organization>Google</organization>
-
-      <address>
-        <postal>
-          <street></street>
-
-          <!-- Reorder these if your country does things differently -->
-
-          <city></city>
-
-          <region></region>
-
-          <code></code>
-
-          <country></country>
-        </postal>
-
-        <phone></phone>
-
-        <email></email>
-
-        <!-- uri and facsimile elements may also be added -->
-      </address>
-    </author>
-
-    <author fullname="Nick Mathewson" initials="N.M."
+    <author fullname="Nick Mathewson" initials="N."
             surname="Mathewson">
       <organization abbrev="Tor">The Tor Project</organization>
 
@@ -107,6 +80,32 @@
       </address>
     </author>
 
+    <author fullname="Ben Laurie" initials="B."
+            surname="Laurie">
+      <organization>Google</organization>
+
+      <address>
+        <postal>
+          <street></street>
+
+          <!-- Reorder these if your country does things differently -->
+
+          <city></city>
+
+          <region></region>
+
+          <code></code>
+
+          <country></country>
+        </postal>
+
+        <phone></phone>
+
+        <email></email>
+
+        <!-- uri and facsimile elements may also be added -->
+      </address>
+    </author>
 
     <date year="2013" />
 
@@ -155,7 +154,7 @@
    <section title="The current behavior of gmt_unix_time">
      <t>According to RFC 2246 ("The TLS Protocol Version 1.0"), gmt_unix_time
        holds
-     <!-- How the heck does one include a block quotation?? - NM -->
+       <!-- Is there some way to do a block quotation? - NM -->
        "The current time and date in standard UNIX 32-bit format (seconds
        since the midnight starting Jan 1, 1970, GMT) according to the
        sender's internal clock. Clocks are not required to be set
@@ -168,7 +167,7 @@
      predecessor to TLS 1.0.  The field was meant to preserve the protocol's
      robustness in the presence of unreliable random number generators that
      might generate the same random values more than once.  If this happened,
-     then SSL would be vulnerable to various attacks (XXXX say which ones)
+     then SSL would be vulnerable to various attacks
      based on the non-uniqueness of the Random fields in the ClientHello and
      ServerHello messages. Using the time value in this way was meant to
      prevent </t>
@@ -194,8 +193,9 @@
     the future, the attacker can make the client, the attacker can set a
     time-based plaintext "cookie" that will persist on the user's TLS
     connections for so long as the user's view of the current time remains
-    skewed.  (The system of XXXX <!-- does such a system exist? --> prevents
-    this attack by authenticating NTP replies, but it is not widely used.)
+    skewed.  (The system of RFC 5906 prevents
+    this attack by authenticating NTP replies, but it is not universally
+    used.)
     </t>
    </section>
    <section title="gmt_unix_time is an undesirable on servers as well">
@@ -229,25 +229,25 @@
      <t>Further, even if gmt_unix_time were adequate, it would not be
        necessary.
        Given an even minimally cryptographically adequate PRNG, and a
-       non-repeating clock, implementors can insure that the PRNG generates
+       non-repeating clock, implementors can ensure that the PRNG generates
        non-repeated values by adding the current (high resolution) time to
        the PRNG state when seeding it.  This is not enough to ensure that the
        PRNG is unpredictable by an attacker, but it does ensure that the PRNG
        will not generate duplicate values even in the presence of inadequate
        entropy sources. Most cryptographic libraries and
-       operating system PRNGs take this approach to day.
+       operating system PRNGs take this approach today.
      </t>
    </section>
  </section>
 
  <section title="Deprecating gmt_unix_time">
    <t>For the reasons we discuss above, we recommend that TLS implementors
-     should by default set the entire value the ClientHello.Random and
+     MUST by default set the entire value the ClientHello.Random and
      ServerHello.Random fields, including gmt_unix_time, to a cryptographically
      random sequence.
    </t>
    <t>If existing users of a TLS implementation may rely on gmt_unix_time
-     containing the current time, we recommend that implementors provide the
+     containing the current time, we recommend that implementors MAY provide the
      ability to set gmt_unix_time as an option only, off by default.
    </t>
    <t>Generating cryptographically strong pseudorandom sequences is beyond
@@ -260,10 +260,16 @@
  </section>
 
  <section title="Impact on existing tools">
+
+<!-- d https://github.com/openssl/openssl/pull/23
+and https://github.com/openssl/openssl/pull/29 -->
+<!-- https://bugzilla.mozilla.org/show_bug.cgi?id=937976 -->
+
+
  </section>
 
  <section title="Security considerations">
-   <t>It's all security here. What are we supposed to say?</t>
+   <t>The entire document is security consideratinos</t>
  </section>
 
 </middle>
