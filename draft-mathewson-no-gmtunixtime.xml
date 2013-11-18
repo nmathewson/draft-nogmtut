@@ -259,14 +259,14 @@
    </t>
  </section>
 
- <section title="Impact on existing tools">
+<!-- <section title="Impact on existing tools"> -->
 
 <!-- d https://github.com/openssl/openssl/pull/23
 and https://github.com/openssl/openssl/pull/29 -->
 <!-- https://bugzilla.mozilla.org/show_bug.cgi?id=937976 -->
 
 
- </section>
+<!-- </section> -->
 
  <section title="Security considerations">
    <t>The entire document is security consideratinos</t>
