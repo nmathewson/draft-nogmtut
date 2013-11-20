@@ -170,7 +170,9 @@
      then SSL would be vulnerable to various attacks
      based on the non-uniqueness of the Random fields in the ClientHello and
      ServerHello messages. Using the time value in this way was meant to
-     prevent </t>
+     prevent the same Random value from being sent more than once, even
+     in the presence of misbehaved random number generators.
+     </t>
    </section>
    <section title="gmt_unix_time is an undesirable client fingerprint">
     <t>Despite the late date, much of the world is still not synchronized to
@@ -339,21 +341,5 @@ and https://github.com/openssl/openssl/pull/29 -->
       <t>This becomes an Appendix.</t>
     </section>
 
-    <!-- Change Log
-
-v00 2006-03-15  EBD   Initial version
-
-v01 2006-04-03  EBD   Moved PI location back to position 1 -
-                      v3.1 of XMLmind is better with them at this location.
-v02 2007-03-07  AH    removed extraneous nested_list attribute,
-                      other minor corrections
-v03 2007-03-09  EBD   Added comments on null IANA sections and fixed heading capitalization.
-                      Modified comments around figure to reflect non-implementation of
-                      figure indent control.  Put in reference using anchor="DOMINATION".
-                      Fixed up the date specification comments to reflect current truth.
-v04 2007-03-09 AH     Major changes: shortened discussion of PIs,
-                      added discussion of rfc include.
-v05 2007-03-10 EBD    Added preamble to C program example to tell about ABNF and alternative
-                      images. Removed meta-characters from comments (causes problems).  -->
   </back>
 </rfc>
