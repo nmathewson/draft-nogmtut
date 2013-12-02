@@ -104,7 +104,7 @@
 
         <phone></phone>
 
-        <email></email>
+        <email>benl@google.com</email>
 
         <!-- uri and facsimile elements may also be added -->
       </address>
@@ -206,11 +206,12 @@
    <section title="gmt_unix_time is an undesirable on servers as well">
      <t>While some protocol designs retain a clear separation between
        (nominally anonymous, possibly privacy-seeking) clients, and (well
-       known, easy to find) servers, there are numerous counterexamples in
+       known, easy to find) servers, there are several counterexamples in
        which the responder to a TLS connection (the "Server" in the language
-       of the TLS specification) also wishes to avoid fingerprinting.
+       of the TLS specification) also wishes to avoid fingerprinting. These
+       include services provided through an anonymizing service, and
+       participation in some peer-to-peer network designs.
      </t>
-     <t>...</t>
    </section>
    <section title="gmt_unix_time is neither adequate nor necessary for its
                    intended purpose">
