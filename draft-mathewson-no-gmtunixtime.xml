@@ -193,10 +193,10 @@
     statistical profile of when within a single second a client transitions
     from one second to another, and thereby distinguish such clients.
     </t>
-    <t>Finally, an active packet-forging attacker can forge NTP replies to a
+    <t>Finally, an active packet-forging attacker who can forge NTP replies to a
     targeted client can introduce anomalies in that client's view of the
     current time.  By (say) slowly advancing a client a fixed interval into
-    the future, the attacker can make the client, the attacker can set a
+    the future, the attacker can set a
     time-based plaintext "cookie" that will persist on the user's TLS
     connections for so long as the user's view of the current time remains
     skewed.  (The system of RFC 5906 prevents
